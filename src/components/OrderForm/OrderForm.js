@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 const OrderForm = ( { newOrder }) => {
   const [name, setName] = useState('')
   const [ingredients, setIngredients] = useState([])
+  const [error, setError] = useState('')
 
   const handleNameChange = (e) => {
     e.preventDefault()
@@ -23,12 +24,17 @@ const OrderForm = ( { newOrder }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const order = {
-      name: name,
-      ingredients: ingredients
+    if(name !== '' && ingredients.length !== 0) {
+      const order = {
+        name: name,
+        ingredients: ingredients
+      }
+      newOrder(order);
+      setError('')
+      clearInputs();
+    } else {
+        setError('Please enter your name and select at least one ingredient to submit your order!')
     }
-    newOrder(order);
-    clearInputs();
   }
 
     const possibleIngredients = ['beans', 'steak', 'carnitas', 'sofritas', 'lettuce', 'queso fresco', 'pico de gallo', 'hot sauce', 'guacamole', 'jalapenos', 'cilantro', 'sour cream'];
@@ -52,6 +58,7 @@ const OrderForm = ( { newOrder }) => {
         { ingredientButtons }
 
         <p>Order: { ingredients.join(', ') || 'Nothing selected' }</p>
+        {error !== '' && <p>{error}</p>}
 
         <button onClick={e => handleSubmit(e)}>
           Submit Order
