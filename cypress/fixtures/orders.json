@@ -1,16 +1,12 @@
 {
   "orders": [
     {
-      "name": "Katherine",
-      "ingredients": ["beans", "lettuce", "guacamole", "sour cream"]
-    },
-    {
       "name": "Heather",
       "ingredients": ["carnitas", "pico de gallo", "sour cream"]
     },
     {
       "name": "Nik",
-      "ingredients": ["beans", "cilantro", "jalapenos", "queso fresco"]
+      "ingredients": ["beans", "jalapenos", "queso fresco"]
     }
   ]
 }
