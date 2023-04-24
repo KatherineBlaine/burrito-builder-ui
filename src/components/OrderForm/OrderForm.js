@@ -4,16 +4,27 @@ const OrderForm = () => {
   const [name, setName] = useState('')
   const [ingredients, setIngredients] = useState([])
 
-
-  handleSubmit = e => {
-    e.preventDefault();
-    clearInputs();
+  const handleIngredientChange = (e) => {
+    e.preventDefault()
+    console.log('ingredient change')
   }
 
-  clearInputs = () => {
+  const handleNameChange = (e) => {
+    e.preventDefault()
+    console.log('name change')
+  }
+
+  const clearInputs = () => {
     setName('');
     setIngredients([]);
   }
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log('submit!')
+    clearInputs();
+  }
+
     const possibleIngredients = ['beans', 'steak', 'carnitas', 'sofritas', 'lettuce', 'queso fresco', 'pico de gallo', 'hot sauce', 'guacamole', 'jalapenos', 'cilantro', 'sour cream'];
     const ingredientButtons = possibleIngredients.map(ingredient => {
       return (
@@ -28,7 +39,7 @@ const OrderForm = () => {
           type='text'
           placeholder='Name'
           name='name'
-          value={this.state.name}
+          value={name}
           onChange={e => handleNameChange(e)}
         />
 
