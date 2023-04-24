@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const OrderForm = () => {
+const OrderForm = ( { newOrder }) => {
   const [name, setName] = useState('')
   const [ingredients, setIngredients] = useState([])
 
@@ -23,7 +23,11 @@ const OrderForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('submit!')
+    const order = {
+      name: name,
+      ingredients: ingredients
+    }
+    newOrder(order);
     clearInputs();
   }
 

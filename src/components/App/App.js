@@ -8,6 +8,11 @@ const App = () =>  {
   const [allOrders, setAllOrders] = useState([])
   const [newOrder, setNewOrder] = useState({})
 
+  const getNewOrder = (order) => {
+    console.log(order)
+    setNewOrder(order)
+  }
+
   const getOrders = async () => {
     try {
       const data = await fetchOrders()
@@ -25,7 +30,7 @@ const App = () =>  {
       <main className="App">
         <header>
           <h1>Burrito Builder</h1>
-          <OrderForm />
+          <OrderForm newOrder={getNewOrder}/>
         </header>
         <Orders orders={allOrders}/>
       </main>
