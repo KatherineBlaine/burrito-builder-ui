@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import { postOrder } from '../../apiCalls';
 
-const OrderForm = ( { newOrder }) => {
+const OrderForm = ({ submitOrder }) => {
   const [name, setName] = useState('')
   const [ingredients, setIngredients] = useState([])
   const [error, setError] = useState('')
+  const [newOrder, setNewOrder] = useState({})
+
+  useEffect(() => {
+    postOrder(newOrder)
+    submitOrder(newOrder)
+  }, [newOrder])
 
   const handleNameChange = (e) => {
     e.preventDefault()
     setName(e.target.value)
-    console.log('name change')
   }
 
   const handleIngredientChange = (e) => {
     e.preventDefault()
     setIngredients([...ingredients, e.target.name])
-    console.log('ingredient change', ingredients)
   }
 
   const clearInputs = () => {
@@ -29,7 +34,7 @@ const OrderForm = ( { newOrder }) => {
         name: name,
         ingredients: ingredients
       }
-      newOrder(order);
+      setNewOrder(order);
       setError('')
       clearInputs();
     } else {
