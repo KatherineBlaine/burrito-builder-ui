@@ -1,4 +1,5 @@
-export const getOrders = () => {
-  return fetch('http://localhost:3001/api/v1/orders')
-      .then(response => response.json())
+export const fetchOrders = async () => {
+  const response = await fetch('http://localhost:3001/api/v1/orders')
+  const allOrders = await response.json()
+  return allOrders
 }
