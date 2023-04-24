@@ -6,6 +6,7 @@ import OrderForm from '../../components/OrderForm/OrderForm';
 
 const App = () =>  {
   const [allOrders, setAllOrders] = useState([])
+  const [newOrder, setNewOrder] = useState({})
 
   const getOrders = async () => {
     try {

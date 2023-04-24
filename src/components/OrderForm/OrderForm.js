@@ -4,14 +4,16 @@ const OrderForm = () => {
   const [name, setName] = useState('')
   const [ingredients, setIngredients] = useState([])
 
-  const handleIngredientChange = (e) => {
-    e.preventDefault()
-    console.log('ingredient change')
-  }
-
   const handleNameChange = (e) => {
     e.preventDefault()
+    setName(e.target.value)
     console.log('name change')
+  }
+
+  const handleIngredientChange = (e) => {
+    e.preventDefault()
+    setIngredients([...ingredients, e.target.name])
+    console.log('ingredient change', ingredients)
   }
 
   const clearInputs = () => {
