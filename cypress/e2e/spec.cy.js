@@ -99,6 +99,19 @@ describe('Burrito Order Form Functionality', () => {
   })
 })
 
+describe('Error handling message', () => {
+  beforeEach(() => {
+    cy.intercept('GET', 'http://localhost:3001/api/v1/orders', {
+      statusCode: 400,
+    })
+    cy.visit('http://localhost:3000')
+  })
+
+  it('Should display a server error message in the event of a failed network request', () => {
+    cy.get('h3').should('be.visible').contains('Sorry, Server Error! Please try again.')
+  })
+})
+
 
 
 
