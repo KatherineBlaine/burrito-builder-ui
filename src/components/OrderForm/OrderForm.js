@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { postOrder } from '../../apiCalls';
 
 const OrderForm = ({ submitOrder }) => {
@@ -73,3 +74,7 @@ const OrderForm = ({ submitOrder }) => {
   }
 
 export default OrderForm;
+
+OrderForm.propTypes = {
+  submitOrder: PropTypes.func
+}
