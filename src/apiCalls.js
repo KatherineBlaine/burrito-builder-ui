@@ -10,7 +10,6 @@ export const postOrder = async (newOrder) => {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        key: Date.now(),
         name: newOrder.name,
         ingredients: newOrder.ingredients
       })
